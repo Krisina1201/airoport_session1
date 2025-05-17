@@ -1,0 +1,93 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="Airport.AddUser"
+        Width="500"
+        Height="450"
+        Title="Add User"
+        WindowStartupLocation="CenterScreen">
+
+	<Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Text="Email address:"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Margin="0,0,15,10"/>
+		<TextBox x:Name="emailBox"
+                 Grid.Row="0" Grid.Column="1"
+                 Width="250"
+                 Margin="0,0,0,10"/>
+
+		<TextBlock Text="First Name:"
+                 Grid.Row="1" Grid.Column="0"
+                 VerticalAlignment="Center"
+                 Margin="0,0,15,10"/>
+		<TextBox x:Name="firstNameBox"
+                 Grid.Row="1" Grid.Column="1"
+                 Width="250"
+                 Margin="0,0,0,10"/>
+
+		<TextBlock Text="Last Name:"
+                 Grid.Row="2" Grid.Column="0"
+                 VerticalAlignment="Center"
+                 Margin="0,0,15,10"/>
+		<TextBox x:Name="lastNameBox"
+                 Grid.Row="2" Grid.Column="1"
+                 Width="250"
+                 Margin="0,0,0,10"/>
+
+		<TextBlock Text="Office:"
+                 Grid.Row="3" Grid.Column="0"
+                 VerticalAlignment="Center"
+                 Margin="0,0,15,10"/>
+		<ComboBox x:Name="officeComboBox"
+                 Grid.Row="3" Grid.Column="1"
+                 Width="250"
+                 Margin="0,0,0,10"/>
+
+		<TextBlock Text="Birthday:"
+                 Grid.Row="4" Grid.Column="0"
+                 VerticalAlignment="Center"
+                 Margin="0,0,15,10"/>
+		<TextBox x:Name="birthdayBox"
+                 Grid.Row="4" Grid.Column="1"
+                 Width="250"
+                 Watermark="yyyy-mm-dd"
+                 Margin="0,0,0,10"/>
+
+		<TextBlock Text="Password:"
+                 Grid.Row="5" Grid.Column="0"
+                 VerticalAlignment="Center"
+                 Margin="0,0,15,10"/>
+		<TextBox x:Name="passwordBox"
+                 Grid.Row="5" Grid.Column="1"
+                 Width="250"
+                 PasswordChar="•"
+                 Margin="0,0,0,20"/>
+
+		<StackPanel Orientation="Horizontal"
+                   HorizontalAlignment="Center"
+                   Grid.Row="7" Grid.ColumnSpan="2">
+			<Button Content="Save" Background="White" BorderBrush="Black" Click="saveClick"
+					Margin="0,0,20,0" Width="100" HorizontalContentAlignment="Center"/>
+			<Button Content="Cancel" Background="White" BorderBrush="Black"
+					Margin="20,0,20,0" Width="100" HorizontalContentAlignment="Center" Click="cancelClick"/>
+		</StackPanel>
+	</Grid>
+</Window>

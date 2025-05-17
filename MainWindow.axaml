@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		Width="700"
+		Height="450"
+        x:Class="Airport.MainWindow"
+        Title="Airport">
+	<DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+		<StackPanel Orientation="Vertical">
+			
+			<Image Source="/resourse/mainFoto.png" HorizontalAlignment="Center"
+				   Stretch="Uniform" Height="150" Margin="30" Width="450"/>
+			
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 0, 10, 0">
+				<TextBlock Text="UserName:" Margin="0, 10, 0, 0"/>
+				<TextBox x:Name="userNameBox" Width="370" Margin="15, 0, 0, 0" BorderBrush="Black"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+						Margin="0, 30, 0, 0">
+				<TextBlock Text="Password:" Margin="0, 10, 0, 0"/>
+				<TextBox x:Name="passwordBox" Width="370" Margin="15, 0, 0, 0" BorderBrush="Black"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 30, 0, 0">
+				<Button Content="Login" Margin="60, 0, 30, 0" x:Name="loginButton" Width="130"  Click="LoginClick"
+						HorizontalContentAlignment="Center" Background="White" BorderBrush="Black"/>
+				<Button Content="Exit" Margin="0, 0, 0, 0" Width="130" Click="exitClick"
+						HorizontalContentAlignment="Center" Background="White" BorderBrush="Black"/>
+			</StackPanel>
+			<TextBlock x:Name="timer"
+               Foreground="Red"
+               Margin="0,10"
+               HorizontalAlignment="Center"/>
+		</StackPanel>
+	</DockPanel>
+</Window>

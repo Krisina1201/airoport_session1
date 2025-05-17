@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Airport.AdminMainWindow"
+        x:CompileBindings="False"
+        Title="AdminMainWindow">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<StackPanel Grid.Row="0" Height="40" 
+                   Orientation="Horizontal">
+			<Button Content="Add User" Margin="1" FontWeight="Medium" Background="White" Height="30" Click="AddUserClick"/>
+			<Button Content="Exit" Margin="1" Click="exitClick" FontWeight="Medium" Background="White" Height="30"/> 
+		</StackPanel>
+
+		<Border Grid.Row="1" Height="1" Background="Black" Margin="0,0,0,75"/>
+		
+		<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10">
+			<TextBlock Text="Office: " Margin="20" FontWeight="Medium"/>
+			<ComboBox x:Name="officeCombobox" Margin="0,13,0,0" Width="200"/>
+		</StackPanel>
+
+		<ScrollViewer Grid.Row="2" Margin="13,15,13,0" VerticalScrollBarVisibility="Auto">
+			<DataGrid x:Name="EmployeeDataGrid"
+                      GridLinesVisibility="All"
+                      BorderThickness="0.6"
+                      IsReadOnly="True"
+					  Height="350"
+                      AutoGenerateColumns="False"
+                      BorderBrush="Black">
+				
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Name" Binding="{Binding FirstName}" Width="*"/>
+					<DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*"/>
+					<DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="Auto"/>
+					<DataGridTextColumn Header="User Role" Binding="{Binding UserRole}" Width="*"/>
+					<DataGridTextColumn Header="Email Address" Binding="{Binding EmailAddress}" Width="2*"/>
+					<DataGridTextColumn Header="Office" Binding="{Binding Office}" Width="*"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</ScrollViewer>
+
+		<StackPanel Grid.Row="3"
+				   Orientation="Horizontal"
+				   VerticalAlignment="Bottom"
+				   Margin="0,15,0,20"
+				   Height="50">
+			
+			<Button Content="Change Role"
+					Background="White"
+					BorderBrush="Black"
+					Width="120"
+					Height="30"  
+					Click="changeRoleClock"
+			Margin="10,0"
+			FontSize="14"/>
+
+			<Button Content="Enable/Disable Login"
+					Background="White"
+					BorderBrush="Black"
+					Width="160"
+					Height="30" 
+					Click="logoutClick"
+			Margin="110,0"
+			FontSize="14"/>
+		</StackPanel>
+	</Grid>
+</Window>
