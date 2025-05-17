@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		Height="500"
 		Width="800"
+		x:CompileBindings="False"
         x:Class="Airport.UserMainWindow"
         Title="UserMainWindow">
 	<Grid>
@@ -21,7 +22,7 @@
 				FontWeight="Medium" Background="White" Height="30"/>
 		</StackPanel>
 		
-		<Border Grid.Row="1" Height="1" Background="Black" Margin="0,0,0,75"/>
+		<Border Grid.Row="1" Height="1" Background="Black" Margin="0,0,0,35"/>
 
 		<StackPanel Grid.Row="2">
 			<TextBlock x:Name="helloTextBlock" Margin="20,0,0,0"/>
@@ -30,5 +31,24 @@
 				<TextBlock x:Name="crashCountTextBlock" Margin="90,0,0,0"/>
 			</StackPanel>
 		</StackPanel>
+
+		<ScrollViewer Grid.Row="3" Margin="13,15,13,0" VerticalScrollBarVisibility="Auto">
+			<DataGrid x:Name="EmployeeDataGrid"
+                      GridLinesVisibility="All"
+                      BorderThickness="0.6"
+                      IsReadOnly="True"
+					  Height="350"
+                      AutoGenerateColumns="False"
+                      BorderBrush="Black">
+
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+					<DataGridTextColumn Header="Login time" Binding="{Binding LoginTime}" Width="*"/>
+					<DataGridTextColumn Header="Logout time" Binding="{Binding LogoutTime}" Width="Auto"/>
+					<DataGridTextColumn Header="Time spent on system" Binding="{Binding TimeInSystem}" Width="*"/>
+					<DataGridTextColumn Header="Unsuccessful logout reason" Binding="{Binding Error}" Width="2*"/>
+				</DataGrid.Columns>
+			</DataGrid>
+		</ScrollViewer>
 	</Grid>
 </Window>

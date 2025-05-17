@@ -74,6 +74,8 @@ public partial class MainWindow : Window
                 Entrance = DateTime.Now
             });
 
+            Program.userId = user.Id;
+
             context.SaveChanges();
 
             if (user.Roleid == 1)

@@ -147,3 +147,4 @@ C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\refint\Avalonia\Air
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Airport.csproj.Up2Date
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Airport.genruntimeconfig.cache
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\ref\Airport.dll
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+using System.Globalization;
+
 namespace Airport;
 
 public class Employee
@@ -16,7 +18,7 @@ public class Employee
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public int Age { get; set; }
-    public DateOnly? date { get; set; }
+    public DateOnly date { get; set; }
     public string UserRole { get; set; }
     public string EmailAddress { get; set; }
     public string Office { get; set; }
@@ -40,25 +42,7 @@ public partial class AdminMainWindow : Window
         itemsComboxOffice.Add("Âñ¸");
         officeCombobox.ItemsSource = itemsComboxOffice;
 
-        employees = context.Users.Select(e => new Employee
-        {
-            Id = e.Id,
-            FirstName = e.Firstname,
-            LastName = e.Lastname,
-            Age = 40,
-            UserRole = e.Role.Title,
-            EmailAddress = e.Email,
-            date = e.Birthdate,
-            Office = e.Office.Title,
-            Active = e.Active,
-            Password = e.Password
-        }).ToList();
-       
-
-        _originalData = new ObservableCollection<Employee>(employees);
-        _filteredData = new ObservableCollection<Employee>(_originalData);
-
-        EmployeeDataGrid.ItemsSource = _filteredData;
+        RefreshData();
 
         officeCombobox.SelectionChanged += filterComboboxByOffice;
     }
@@ -164,14 +148,16 @@ public partial class AdminMainWindow : Window
         dialog.ShowDialog(this);
     }
 
+
     private void RefreshData()
     {
+        int today = int.Parse(DateTime.Now.Year.ToString());
         employees = context.Users.Select(e => new Employee
         {
             Id = e.Id,
             FirstName = e.Firstname,
             LastName = e.Lastname,
-            Age = 40,
+            Age = today - e.Birthdate.Year,
             UserRole = e.Role.Title,
             EmailAddress = e.Email,
             date = e.Birthdate,

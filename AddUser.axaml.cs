@@ -22,8 +22,8 @@ public partial class AddUser : Window
 
     private void cancelClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        AdminMainWindow adminMainWindow = new AdminMainWindow();
-        adminMainWindow.Show();
+        //AdminMainWindow adminMainWindow = new AdminMainWindow();
+        //adminMainWindow.Show();
         this.Close();
     }
 
@@ -59,7 +59,8 @@ public partial class AddUser : Window
         else if (!Regex.IsMatch(inputBirthday, checkDate, RegexOptions.IgnoreCase))
         {
             ShowErrorDialog("Ошибка", "Не верный формат даты!\nНеобходимый формат 'ГГГГ-ММ-ДД'");
-        } else
+        }
+        else
         {
             try
             {
