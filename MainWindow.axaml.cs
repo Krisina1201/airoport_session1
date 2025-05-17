@@ -82,7 +82,7 @@ public partial class MainWindow : Window
             }
             else
             {
-                new UserMainWindow().Show();
+                new UserMainWindow(user).Show();
             }
 
             this.Close();

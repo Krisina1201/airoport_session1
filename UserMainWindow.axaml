@@ -3,6 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		Height="500"
+		Width="800"
         x:Class="Airport.UserMainWindow"
         Title="UserMainWindow">
 	<Grid>
@@ -22,7 +24,11 @@
 		<Border Grid.Row="1" Height="1" Background="Black" Margin="0,0,0,75"/>
 
 		<StackPanel Grid.Row="2">
-			<TextBlock 
+			<TextBlock x:Name="helloTextBlock" Margin="20,0,0,0"/>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock x:Name="timeInSession" Margin="250,0,0,0"/>
+				<TextBlock x:Name="crashCountTextBlock" Margin="90,0,0,0"/>
+			</StackPanel>
 		</StackPanel>
 	</Grid>
 </Window>
