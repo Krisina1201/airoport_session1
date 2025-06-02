@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Airport.AdminMainWindow"
         x:CompileBindings="False"
+		WindowStartupLocation="CenterScreen"
         Title="AdminMainWindow">
 
 	<Grid>
@@ -70,6 +71,15 @@
 					Width="160"
 					Height="30" 
 					Click="logoutClick"
+			Margin="110,0"
+			FontSize="14"/>
+			
+			<Button Content="Flight schedule"
+					Background="White"
+					BorderBrush="Black"
+					Width="160"
+					Height="30" 
+					Click="flightClick"
 			Margin="110,0"
 			FontSize="14"/>
 		</StackPanel>

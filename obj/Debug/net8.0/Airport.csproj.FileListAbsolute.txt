@@ -1,8 +1,4 @@
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.exe
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.deps.json
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.runtimeconfig.json
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.dll
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.pdb
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Avalonia.Base.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Avalonia.Controls.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Avalonia.DesignerSupport.dll
@@ -59,8 +55,14 @@ C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Composition.
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Composition.Hosting.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Composition.Runtime.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.IO.Pipelines.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Tmds.DBus.Protocol.dll
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x64\native\libHarfBuzzSharp.dll
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.exe
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.deps.json
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.runtimeconfig.json
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
@@ -123,7 +125,6 @@ C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-musl
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-x64\native\libHarfBuzzSharp.so
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\osx\native\libHarfBuzzSharp.dylib
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-arm64\native\libHarfBuzzSharp.dll
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x64\native\libHarfBuzzSharp.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x86\native\libHarfBuzzSharp.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-arm\native\libSkiaSharp.so
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-arm64\native\libSkiaSharp.so
@@ -131,7 +132,6 @@ C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-musl
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\linux-x64\native\libSkiaSharp.so
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
 C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Airport.csproj.AssemblyReference.cache
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Avalonia\Resources.Inputs.cache
@@ -146,5 +146,5 @@ C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Avalonia\Airport.pd
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\refint\Avalonia\Airport.dll
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Airport.csproj.Up2Date
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\Airport.genruntimeconfig.cache
+C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\Airport.pdb
 C:\Users\Admin\source\repos\Airport\Airport\obj\Debug\net8.0\ref\Airport.dll
-C:\Users\Admin\source\repos\Airport\Airport\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll

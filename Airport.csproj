@@ -28,5 +28,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
 
 	<AvaloniaResource Include="resourse\mainFoto.png" />
+<AvaloniaResource Include="resourse\pen.png" />
+<AvaloniaResource Include="resourse\upload.png" />
+<AvaloniaResource Include="resourse\xxx.png" />
   </ItemGroup>
 </Project>

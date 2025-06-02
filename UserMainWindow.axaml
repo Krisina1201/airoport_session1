@@ -7,7 +7,9 @@
 		Width="800"
 		x:CompileBindings="False"
         x:Class="Airport.UserMainWindow"
+		WindowStartupLocation="CenterScreen"
         Title="UserMainWindow">
+	
 	<Grid>
 		
 		<Grid.RowDefinitions>

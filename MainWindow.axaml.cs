@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Threading;
 using System;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace Airport;
 
@@ -12,10 +13,13 @@ public partial class MainWindow : Window
     private DispatcherTimer _lockTimer;
     private int _remainingLockTime = 10;
     private bool _isLocked = false;
+    public User user;
 
     public MainWindow()
     {
         InitializeComponent();
+
+        user = new User();
 
         _lockTimer = new DispatcherTimer
         {
@@ -51,7 +55,7 @@ public partial class MainWindow : Window
 
         try
         {
-            var user = context.Users.FirstOrDefault(u => u.Email == userName);
+            user = context.Users.FirstOrDefault(u => u.Email == userName);
 
             if (user == null)
             {
@@ -80,7 +84,7 @@ public partial class MainWindow : Window
 
             if (user.Roleid == 1)
             {
-                new AdminMainWindow().Show();
+                new AdminMainWindow(user).Show();
             }
             else
             {

@@ -6,6 +6,7 @@
 		Width="700"
 		Height="450"
         x:Class="Airport.MainWindow"
+		WindowStartupLocation="CenterScreen"
         Title="Airport">
 	<DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
 		<StackPanel Orientation="Vertical">

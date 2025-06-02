@@ -15,11 +15,19 @@ public partial class User23Context : DbContext
     {
     }
 
+    public virtual DbSet<Aircraft> Aircrafts { get; set; }
+
+    public virtual DbSet<Airport> Airports { get; set; }
+
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<Office> Offices { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<Route> Routes { get; set; }
+
+    public virtual DbSet<Schedule> Schedules { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -31,11 +39,56 @@ public partial class User23Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder
+            .HasPostgresEnum("ses3", "client_type", new[] { "ЮЛ", "ФЛ" })
+            .HasPostgresEnum("ses3", "order_status", new[] { "Новая", "На исследовании", "Закрыта" });
+
+        modelBuilder.Entity<Aircraft>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("pk_airplan");
+
+            entity.ToTable("aircrafts", "session2");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("id");
+            entity.Property(e => e.Businessseats).HasColumnName("businessseats");
+            entity.Property(e => e.Economyseats).HasColumnName("economyseats");
+            entity.Property(e => e.Makemodel)
+                .HasMaxLength(10)
+                .HasColumnName("makemodel");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .HasColumnName("name");
+            entity.Property(e => e.Totalseats).HasColumnName("totalseats");
+        });
+
+        modelBuilder.Entity<Airport>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("airports_pkey");
+
+            entity.ToTable("airports", "session2");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Countryid).HasColumnName("countryid");
+            entity.Property(e => e.Iatacode)
+                .HasMaxLength(3)
+                .HasColumnName("iatacode");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .HasColumnName("name");
+
+            entity.HasOne(d => d.Country).WithMany(p => p.Airports)
+                .HasForeignKey(d => d.Countryid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_airport_country");
+        });
+
         modelBuilder.Entity<Country>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("countries_pkey");
 
-            entity.ToTable("countries");
+            entity.ToTable("countries", "session2");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Name)
@@ -47,7 +100,7 @@ public partial class User23Context : DbContext
         {
             entity.HasKey(e => e.Id).HasName("offices_pkey");
 
-            entity.ToTable("offices");
+            entity.ToTable("offices", "session2");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Contact)
@@ -69,9 +122,9 @@ public partial class User23Context : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("roles_pkey");
+            entity.HasKey(e => e.Id).HasName("pk_userrole");
 
-            entity.ToTable("roles");
+            entity.ToTable("roles", "session2");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -81,11 +134,64 @@ public partial class User23Context : DbContext
                 .HasColumnName("title");
         });
 
+        modelBuilder.Entity<Route>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("routes_pkey");
+
+            entity.ToTable("routes", "session2");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Arrivalairportid).HasColumnName("arrivalairportid");
+            entity.Property(e => e.Departureairportid).HasColumnName("departureairportid");
+            entity.Property(e => e.Distance).HasColumnName("distance");
+            entity.Property(e => e.Flighttime).HasColumnName("flighttime");
+
+            entity.HasOne(d => d.Arrivalairport).WithMany(p => p.RouteArrivalairports)
+                .HasForeignKey(d => d.Arrivalairportid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_routes_airports3");
+
+            entity.HasOne(d => d.Departureairport).WithMany(p => p.RouteDepartureairports)
+                .HasForeignKey(d => d.Departureairportid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_routes_airports2");
+        });
+
+        modelBuilder.Entity<Schedule>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("schedules_pkey");
+
+            entity.ToTable("schedules", "session2");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Aircraftid).HasColumnName("aircraftid");
+            entity.Property(e => e.Confirmed).HasColumnName("confirmed");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.Economyprice)
+                .HasPrecision(10, 2)
+                .HasColumnName("economyprice");
+            entity.Property(e => e.Flightnumber)
+                .HasMaxLength(10)
+                .HasColumnName("flightnumber");
+            entity.Property(e => e.Routeid).HasColumnName("routeid");
+            entity.Property(e => e.Time).HasColumnName("time");
+
+            entity.HasOne(d => d.Aircraft).WithMany(p => p.Schedules)
+                .HasForeignKey(d => d.Aircraftid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_schedule_aircraft");
+
+            entity.HasOne(d => d.Route).WithMany(p => p.Schedules)
+                .HasForeignKey(d => d.Routeid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_schedule_routes");
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("users_pkey");
+            entity.HasKey(e => e.Id).HasName("pk_user");
 
-            entity.ToTable("users");
+            entity.ToTable("users", "session2");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -121,7 +227,7 @@ public partial class User23Context : DbContext
         {
             entity.HasKey(e => e.Id).HasName("user_info_pkey");
 
-            entity.ToTable("user_info");
+            entity.ToTable("user_info", "session2");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Entrance)
@@ -132,6 +238,10 @@ public partial class User23Context : DbContext
                 .HasColumnType("timestamp without time zone")
                 .HasColumnName("exit");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.UserInfos)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("fk_user_info_users");
         });
 
         OnModelCreatingPartial(modelBuilder);

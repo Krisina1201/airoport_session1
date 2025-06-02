@@ -19,11 +19,13 @@ public partial class User
 
     public int? Officeid { get; set; }
 
-    public DateOnly Birthdate { get; set; }
+    public DateOnly? Birthdate { get; set; }
 
     public bool? Active { get; set; }
 
     public virtual Office? Office { get; set; }
 
     public virtual Role Role { get; set; } = null!;
+
+    public virtual ICollection<UserInfo> UserInfos { get; set; } = new List<UserInfo>();
 }

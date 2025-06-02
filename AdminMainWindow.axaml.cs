@@ -33,14 +33,30 @@ public partial class AdminMainWindow : Window
     private ObservableCollection<Employee> _filteredData;
     public List<Employee> employees;
     private readonly User23Context context;
+    public User loginUser;
 
     public AdminMainWindow()
+    {
+        //context = new User23Context();
+        InitializeComponent();
+        //var itemsComboxOffice = context.Offices.Select(e => e.Title).ToList();
+        //itemsComboxOffice.Add("Всё");
+        //officeCombobox.ItemsSource = itemsComboxOffice;
+
+        //RefreshData();
+
+        //officeCombobox.SelectionChanged += filterComboboxByOffice;
+    }
+    
+    public AdminMainWindow(User user)
     {
         context = new User23Context();
         InitializeComponent();
         var itemsComboxOffice = context.Offices.Select(e => e.Title).ToList();
         itemsComboxOffice.Add("Всё");
         officeCombobox.ItemsSource = itemsComboxOffice;
+
+        loginUser = user;
 
         RefreshData();
 
@@ -84,6 +100,13 @@ public partial class AdminMainWindow : Window
         this.Close();
     }
 
+    private void flightClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        FlightWindow flightWindow = new FlightWindow(loginUser);
+        flightWindow.Show();
+        this.Close();
+    }
+
     private void logoutClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         MainWindow mainWindow = new MainWindow();
@@ -100,6 +123,13 @@ public partial class AdminMainWindow : Window
             return;
         }
         int roleId;
+
+
+        if (selectUser.Id == loginUser.Id)
+        {
+            ShowDialog("Ошибка", "Вы не можете изменить роль сами у себя");
+            return;
+        }
 
         if (selectUser.UserRole == "Administrator") 
         {
@@ -157,10 +187,10 @@ public partial class AdminMainWindow : Window
             Id = e.Id,
             FirstName = e.Firstname,
             LastName = e.Lastname,
-            Age = today - e.Birthdate.Year,
+            Age = today - e.Birthdate.Value.Year,
             UserRole = e.Role.Title,
             EmailAddress = e.Email,
-            date = e.Birthdate,
+            date = e.Birthdate.Value,
             Office = e.Office.Title,
             Active = e.Active,
             Password = e.Password

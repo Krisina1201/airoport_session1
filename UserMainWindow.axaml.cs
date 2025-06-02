@@ -49,7 +49,7 @@ public partial class UserMainWindow : Window
         Loaded += (sender, e) => StartTimer();
 
         helloTextBlock.Text = $"Hi {user.Firstname}. Welcome to AMONIC Airlines.";
-        
+
 
         var employee = context.UserInfos.Where(e => e.UserId == user.Id);
 

@@ -54,7 +54,7 @@ class Program
             {
                 UserId = userId,
                 Exit = DateTime.Now,
-                Error = wasCrash ? error : null 
+                Error = wasCrash ? error : null
             });
 
             _context.SaveChanges();

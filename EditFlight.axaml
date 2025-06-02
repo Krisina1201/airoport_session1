@@ -1,0 +1,69 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Airport.EditFlight"
+        Height="350"
+        Width="800"
+        Title="Schedule edit"
+        WindowStartupLocation="CenterScreen">
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Border Grid.Row="0"
+                BorderBrush="Black"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="15"
+                Margin="0,0,0,20">
+			<StackPanel>
+				<TextBlock Text="Flight route" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+				<StackPanel Orientation="Horizontal" Spacing="30">
+					<StackPanel Orientation="Horizontal" Spacing="5">
+						<TextBlock Text="From:" VerticalAlignment="Center"/>
+						<TextBlock x:Name="fromTextBlock" FontWeight="Bold" VerticalAlignment="Center"/>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Spacing="5">
+						<TextBlock Text="To:" VerticalAlignment="Center"/>
+						<TextBlock x:Name="toTextBlock" FontWeight="Bold" VerticalAlignment="Center"/>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" Spacing="5">
+						<TextBlock Text="Aircraft:" VerticalAlignment="Center"/>
+						<TextBlock x:Name="aircraftTextBlock" FontWeight="Bold" VerticalAlignment="Center"/>
+					</StackPanel>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+
+		<StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="15" Margin="0,0,0,20">
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Date:" Width="80" VerticalAlignment="Center"/>
+				<TextBox x:Name="dateTextBox" Watermark="dd/mm/yy" Width="120"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Time:" Width="80" VerticalAlignment="Center"/>
+				<TextBox x:Name="timeTextBox" Watermark="hh:mm" Width="120"/>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Spacing="10">
+				<TextBlock Text="Price: $" Width="80" VerticalAlignment="Center"/>
+				<TextBox x:Name="priceTextBox" Watermark="$" Width="120"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="15">
+			<Button Content="Update" Width="150" Padding="10,5" Background="White" Click="UpdateClick" BorderBrush="Black" HorizontalContentAlignment="Center"/>
+			<Button Content="Cancel" Width="150" Padding="10,5" Background="White" Click="BackClick" BorderBrush="Black" HorizontalContentAlignment="Center"/>
+		</StackPanel>
+	</Grid>
+</Window>
