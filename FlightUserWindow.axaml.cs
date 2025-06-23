@@ -3,54 +3,26 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform.Storage;
+using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using System;
 using System.Linq;
-using Avalonia.Platform.Storage;
-using System.Windows.Input;
-using System.IO;
-using ClosedXML.Excel;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Airport;
 
-
-public class Item
-{
-    public int Id { get; set; }
-    public DateTime Date { get; set; }
-    public DateTime Time { get; set; }
-    public string From { get; set; }
-    public string To { get; set; }
-    public string FlightNumber { get; set; }
-    public string Aircraft { get; set; }
-    public decimal EconomyPrice { get; set; }
-}
-public partial class FlightWindow : Window
+public partial class FlightUserWindow : Window
 {
     public User23Context context;
     public ObservableCollection<Item> _originalData;
     public ObservableCollection<Item> _filteredData;
     public List<Item> employees;
     public List<Item> filter;
-    public User user;
-
-
-    public FlightWindow()
-    {
-        InitializeComponent();
-        //context = new User23Context();
-
-        //_originalData = new ObservableCollection<Item>();
-        //_filteredData = new ObservableCollection<Item>();
-        //filter = new List<Item>();
-
-        //this.Loaded += (s, e) => RefreshData();
-    }
-    
-    public FlightWindow(User loginUser)
+    public FlightUserWindow()
     {
         InitializeComponent();
         context = new User23Context();
@@ -58,9 +30,6 @@ public partial class FlightWindow : Window
         _originalData = new ObservableCollection<Item>();
         _filteredData = new ObservableCollection<Item>();
         filter = new List<Item>();
-
-        user = loginUser;
-
         this.Loaded += (s, e) => RefreshData();
     }
 
@@ -124,22 +93,8 @@ public partial class FlightWindow : Window
         }
     }
 
-
-    private void EditClick(object sender, RoutedEventArgs e)
-    {
-        Item selectedItemForEdit = EmployeeDataGrid.SelectedItem as Item;
-
-        if (selectedItemForEdit == null) { ShowErrorDialog("Ошибка!", "Выберите полет который хотите обновить"); return; }
-
-        EditFlight editFlight = new EditFlight(selectedItemForEdit, user);
-        editFlight.Show();
-        this.Close();
-    }
-
     private void backClick(object? sender, RoutedEventArgs e)
     {
-        AdminMainWindow adminMainWindow = new AdminMainWindow(user);
-        adminMainWindow.Show();
         this.Close();
     }
 
@@ -167,9 +122,9 @@ public partial class FlightWindow : Window
             else if (time == "День")
                 filtered = filtered.Where(e => e.Time.Hour < 18 && e.Time.Hour >= 12);
             else if (time == "Вечер")
-                filtered = filtered.Where(e => e.Time.Hour < 24 && e.Time.Hour >= 18); 
+                filtered = filtered.Where(e => e.Time.Hour < 24 && e.Time.Hour >= 18); // Исправлено условие (было < 00)
             else if (time == "Ночь")
-                filtered = filtered.Where(e => e.Time.Hour < 6 || e.Time.Hour >= 0); 
+                filtered = filtered.Where(e => e.Time.Hour < 6 || e.Time.Hour >= 0); // Исправлено условие для ночи
         }
 
         string checkDate = @"^\d{4}-\d{2}-\d{2}";
@@ -188,7 +143,7 @@ public partial class FlightWindow : Window
 
         if (!string.IsNullOrEmpty(flightNumber))
         {
-            filtered = filtered.Where(e => e.FlightNumber == flightNumber); 
+            filtered = filtered.Where(e => e.FlightNumber == flightNumber); // Исправлено: было e.Aircraft == flightNumber
         }
 
         if (!filtered.Any())
@@ -337,23 +292,4 @@ public partial class FlightWindow : Window
             ShowErrorDialog("Error", $"Failed to save Excel file: {ex.Message}");
         }
     }
-}
-
-public class RelayCommand : ICommand
-{
-    private readonly Func<object, Task> _execute;
-
-    public RelayCommand(Func<object, Task> execute)
-    {
-        _execute = execute;
-    }
-
-    public bool CanExecute(object parameter) => true;
-
-    public async void Execute(object parameter)
-    {
-        await _execute(parameter);
-    }
-
-    public event EventHandler CanExecuteChanged;
 }

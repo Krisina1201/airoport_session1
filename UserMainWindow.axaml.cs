@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Avalonia.Interactivity;
 
 namespace Airport;
 
@@ -58,17 +59,19 @@ public partial class UserMainWindow : Window
 
         List<Info> listInfo = new List<Info>();
 
-        for (int i = 0; i < loginList.Count(); i++)
+        var pairedRecords = loginList.Zip(logoutList, (login, logout) => new { Login = login, Logout = logout });
+
+        foreach (var record in pairedRecords)
         {
-            if (loginList[i].Entrance.HasValue && logoutList[i].Exit.HasValue)
+            if (record.Login.Entrance.HasValue && record.Logout.Exit.HasValue)
             {
                 listInfo.Add(new Info
                 {
-                    Date = DateOnly.FromDateTime(loginList[i].Entrance.Value.Date),
-                    LoginTime = TimeOnly.FromDateTime(loginList[i].Entrance.Value),
-                    LogoutTime = TimeOnly.FromDateTime(logoutList[i].Exit.Value),
-                    TimeInSystem = (logoutList[i].Exit.Value - loginList[i].Entrance.Value).ToString(@"hh\:mm\:ss"),
-                    Error = logoutList[i].Error
+                    Date = DateOnly.FromDateTime(record.Login.Entrance.Value.Date),
+                    LoginTime = TimeOnly.FromDateTime(record.Login.Entrance.Value),
+                    LogoutTime = TimeOnly.FromDateTime(record.Logout.Exit.Value),
+                    TimeInSystem = (record.Logout.Exit.Value - record.Login.Entrance.Value).ToString(@"hh\:mm\:ss"),
+                    Error = record.Logout.Error
                 });
             }
         }
@@ -77,6 +80,12 @@ public partial class UserMainWindow : Window
 
         int countError = listInfo.Count(e => e.Error != null);
         crashCountTextBlock.Text = $"Number of crashes:     {countError}";
+    }
+
+    private void FlightClick (object? sender, RoutedEventArgs e)
+    {
+        FlightUserWindow flightUserWindow = new FlightUserWindow();
+        flightUserWindow.Show();
     }
 
     private void StartTimer()

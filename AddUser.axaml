@@ -6,7 +6,7 @@
         x:Class="Airport.AddUser"
         Width="500"
         Height="450"
-        Title="Add User"
+        Title="Добавление пользователя"
         WindowStartupLocation="CenterScreen">
 
 	<Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">

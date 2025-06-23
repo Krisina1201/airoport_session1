@@ -79,7 +79,7 @@ public partial class AddUser : Window
                     Password = inputPassword
                 });
                 context.SaveChanges();
-                //this.Close();
+                this.Close();
             }catch
             {
                 ShowErrorDialog("Ошибка", "При сохранении произошла ошибка, попробуйте снова!");

@@ -3,11 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Airport.FlightWindow"
+        x:Class="Airport.FlightUserWindow"
+		x:CompileBindings="False"
 		Height="500"
 		Width="800"
 		WindowStartupLocation="CenterScreen"
-		x:CompileBindings="False"
         Title="Расписание перелетов">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -79,33 +79,20 @@
 			</DataGrid>
 		</ScrollViewer>
 
-		<StackPanel Grid.Row="2" Orientation="Horizontal">
-			<Button MinWidth="150" Background="White" BorderBrush="Black"
-							HorizontalContentAlignment="Center" Margin="15" Click="CancelFlightClick">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/resourse/xxx.png" Stretch="Uniform" Height="15" Width="15"/>
-					<TextBlock Text="Cancel Flight" Margin="5,0,0,0"/>
-				</StackPanel>
-
-			</Button>
-			<Button MinWidth="150" Background="White" BorderBrush="Black"
-							HorizontalContentAlignment="Center" Margin="15" Click="EditClick">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="/resourse/pen.png" Stretch="Uniform" Height="15" Width="15"/>
-					<TextBlock Text="Edit Flight" Margin="5,0,0,0"/>
-				</StackPanel>
-			</Button>
+		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+			
 			<Button MinWidth="200" Background="White" BorderBrush="Black"
-							Click="ImportChangesClick"
-							HorizontalContentAlignment="Center" Margin="150,0,25,0"
+					HorizontalContentAlignment="Center" Margin="150,15,25,15"
+				Click="ImportChangesClick"
 					HorizontalAlignment="Right">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/resourse/upload.png" Stretch="Uniform" Height="15" Width="15"/>
 					<TextBlock Text="Import Changes" Margin="5,0,0,0"/>
 				</StackPanel>
 			</Button>
-			
-			<Button Content="Back" Background="White" BorderBrush="Black" Click="backClick"/>
+
+			<Button Content="Back" Background="White" BorderBrush="Black" Click="backClick"
+					Margin="0,0,13,0"/>
 		</StackPanel>
 	</Grid>
 </Window>

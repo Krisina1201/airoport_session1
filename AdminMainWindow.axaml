@@ -6,7 +6,7 @@
         x:Class="Airport.AdminMainWindow"
         x:CompileBindings="False"
 		WindowStartupLocation="CenterScreen"
-        Title="AdminMainWindow">
+        Title="Информация о пользователях">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -78,6 +78,7 @@
 					Background="White"
 					BorderBrush="Black"
 					Width="160"
+					HorizontalContentAlignment="Center"
 					Height="30" 
 					Click="flightClick"
 			Margin="110,0"
